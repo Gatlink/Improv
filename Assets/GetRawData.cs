@@ -48,6 +48,5 @@ public class GetRawData : MonoBehaviour
 		yield return www;
 
 		data = JsonUtility.FromJson<RawData>(www.text);
-		Debug.Log(data);
 	}
 }
