@@ -44,7 +44,6 @@ public class TribeBehaviour : MonoBehaviour
 			mobile.StopMoving();
 			timeWaiting = Random.Range(1f, tribe.maxWaitingTime);
 			nextWaitingTime = Time.time + timeWaiting + tribe.maxWaitingTime * 5f;
-			Debug.Log("Start waiting: " + timeWaiting);
 
 			return;
 		}
@@ -55,7 +54,6 @@ public class TribeBehaviour : MonoBehaviour
 
 			if (timeWaiting <= 0)
 			{
-				Debug.Log("Stop waiting");
 				SetRandomForward();
 				mobile.StartMoving();
 			}
