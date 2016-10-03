@@ -12,26 +12,19 @@ public class TribeBehaviour : MonoBehaviour
 	private float timeWaiting;
 	private float nextWaitingTime;
 
-	public Tribe tribe { get; set; }
-
-	public void OnEnable()
+	private Tribe tribe;
+	public Tribe Tribe
 	{
-		GetRawData.DataLoadedEvent += WaitForData;
-	}
+		set
+		{
+			tribe = value;
+			nextWaitingTime = Time.time + tribe.maxWaitingTime * 2f;
+			SetRandomForward();
 
-	public void OnDisable()
-	{
-		GetRawData.DataLoadedEvent -= WaitForData;
-	}
-
-	public void WaitForData()
-	{
-		tribe = GameData.tribes[0];
-		nextWaitingTime = Time.time + tribe.maxWaitingTime * 2f;
-		SetRandomForward();
-
-		mobile = GetComponent<Mobile>();
-		mobile.StartMoving();
+			mobile = GetComponent<Mobile>();
+			mobile.color = value.color;
+			mobile.StartMoving();
+		}
 	}
 
 	public void Update()

@@ -18,13 +18,15 @@ public class Tribe
 	public int[] behaviour;
 	public float naturalDeviation;
 	public float maxWaitingTime;
+	public Color color;
 
-	public Tribe(string name, int[] behaviour)
+	public Tribe(string name, int[] behaviour, Color color)
 	{
 		this.name = name;
 		this.behaviour = behaviour;
 		naturalDeviation = Random.value * 0.1f;
 		maxWaitingTime = Random.value * 10f;
+		this.color = color;
 	}
 
 }

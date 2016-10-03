@@ -69,11 +69,11 @@ public class GetRawData : MonoBehaviour
 
 		var names = System.Enum.GetNames(typeof(TribeName));
 		GameData.tribes = new Tribe[] {	
-			new Tribe(names[0], data.alpha),
-			new Tribe(names[1], data.beta),
-			new Tribe(names[2], data.gamma),
-			new Tribe(names[3], data.delta),
-			new Tribe(names[4], data.epsilon)
+			new Tribe(names[0], data.alpha, Color.red),
+			new Tribe(names[1], data.beta, Color.green),
+			new Tribe(names[2], data.gamma, Color.blue),
+			new Tribe(names[3], data.delta, Color.magenta),
+			new Tribe(names[4], data.epsilon, Color.yellow)
 		};
 
 		if (DataLoadedEvent != null)
