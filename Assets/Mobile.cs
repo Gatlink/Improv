@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Mobile : MonoBehaviour
 {
@@ -18,7 +17,7 @@ public class Mobile : MonoBehaviour
 			renderer.material.color = color;
 	}
 
-	public void Update()
+	public void LateUpdate()
 	{
 		var step = timeToFullSpeed != 0 ? desiredSpeed * (Time.time - lastMovementChange) / timeToFullSpeed : desiredSpeed;
 		currentSpeed = Mathf.Min(desiredSpeed, currentSpeed + step * Time.deltaTime);
