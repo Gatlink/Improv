@@ -34,14 +34,13 @@ public class TribeBehaviour : MonoBehaviour
 		for (var i = 0; i < Environment.Instance.walls.Length; ++i)
 		{
 			var wall = Environment.Instance.walls[i];
-			var toWall = wall.position - transform.position;
-			var distance = wall.position.x > 0 ? toWall.x : toWall.y;
-			var factor = Mathf.Max(0f, 1f / distance - 1f);
-			toWall.y = 0f;
-			direction += wallDirectionChangeFactor * factor * -toWall.normalized;
+			// wallToThis
+			// wallVector (right or forward)
+			// scalar of wallToThis on wallVector
+			// wallVector * scalar - wallToThis = directVectorToWall
+			// direction += -directVectorToWall * (1 / directVectorToWall.sqrMagnitude()) * dt 
 		}
 
-		// TODO: Add a factor to wall direction change (the lower the distance, more it should influence the direction)
 		transform.forward = direction;
 	}
 
