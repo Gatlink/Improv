@@ -22,13 +22,18 @@ end
 
 function updateData(from, count)
 	local txtData = http.request("http://198.211.121.98:8000/api/data?from=" .. from .. "&count=" .. count)
-	print(txtData)
 	local data = parseData(txtData)
 	print(data)
+	
+	for k in pairs(data) do
+	 	print(k .. ": ")
+	 	for _, v in ipairs(data[k]) do
+	 		print('    - ' .. v)
+	 	end
+	end
 end
 
 function parseData(data)
-	local replaced = string.gsub(data, '%"(%w+)%":%[([%d,]*)%]', "%1={%2}")
-	print(replaced)
-	return loadstring(replaced)
+	local replaced = "return " .. string.gsub(data, '%"(%w+)%":%[([%d,]*)%]', "%1={%2}")
+	return loadstring(replaced)()
 end
